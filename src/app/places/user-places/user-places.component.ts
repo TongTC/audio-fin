@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { PlacesContainerComponent } from '../places-container/places-container.component';
+import { PlacesContainerComponent } from '../lists-container/places-container.component';
 import { PlacesComponent } from '../places.component';
 
 @Component({

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { AvailablePlacesComponent } from './places/available-places/available-places.component';
+import { AvailablePlacesComponent } from './places/available-stocks/available-stocks.component';
 import { UserPlacesComponent } from './places/user-places/user-places.component';
 
 @Component({
