@@ -1,7 +1,7 @@
 import { Component, input } from '@angular/core';
 
 @Component({
-  selector: 'app-places-container',
+  selector: 'app-lists-container',
   standalone: true,
   imports: [],
   templateUrl: './lists-container.component.html',

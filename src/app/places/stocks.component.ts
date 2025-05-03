@@ -3,7 +3,7 @@ import { Component, input, output } from '@angular/core';
 import { Stock } from './stock.model';
 
 @Component({
-  selector: 'app-places',
+  selector: 'app-stocks',
   standalone: true,
   imports: [],
   templateUrl: './stocks.component.html',
