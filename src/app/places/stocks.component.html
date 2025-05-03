@@ -1,0 +1,13 @@
+<ul>
+  @for (stock of stocks(); track stock.id) {
+    <li class="place-item">
+      <button (click)="onSelectPlace(stock)">
+        <img
+          [src]="'http://localhost:3000/' + stock.image.src"
+          [alt]="stock.image.alt"
+        />
+        <h3>{{ stock.title }}</h3>
+      </button>
+    </li>
+  }
+</ul>

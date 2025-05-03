@@ -1,20 +1,21 @@
 import { Component, DestroyRef, inject, OnInit, signal } from '@angular/core';
 import { catchError, map, throwError } from 'rxjs';
-import { Place } from '../place.model';
-import { PlacesComponent } from '../places.component';
-import { PlacesContainerComponent } from '../lists-container/places-container.component';
+import { Stock } from '../stock.model';
+import { StocksComponent } from '../stocks.component';
+import { ListsContainerComponent } from '../lists-container/lists-container.component';
 import { HttpClient } from '@angular/common/http';
 
 
 @Component({
-  selector: 'app-available-places',
+  selector: 'app-available-stocks',
   standalone: true,
-  templateUrl: './available-places.component.html',
-  styleUrl: './available-places.component.css',
-  imports: [PlacesComponent, PlacesContainerComponent],
+  templateUrl: './available-stocks.component.html',
+  styleUrl: './available-stocks.component.css',
+  imports: [StocksComponent, ListsContainerComponent],
 })
-export class AvailablePlacesComponent implements OnInit{
-  places = signal<Place[] | undefined>(undefined);
+export class AvailableStocksComponent implements OnInit{
+  
+  stocks = signal<Stock[] | undefined>(undefined);
   isFetching =signal(false);
   error =signal('');
   private httpClient = inject(HttpClient);
@@ -23,13 +24,13 @@ export class AvailablePlacesComponent implements OnInit{
   ngOnInit(){
     this.isFetching.set(true);
     const subscription = this.httpClient
-    .get<{places:Place[]}>('http://localhost:3000/places')
+    .get<{stocks:Stock[]}>('http://localhost:3000/places')
     .pipe(
-      map((resData) => resData.places))
+      map((resData) => resData.stocks))
     .subscribe({
-      next: (places) =>{
-        //console.log(places);
-        this.places.set(places);
+      next: (stocks) =>{
+        console.log(stocks);
+        this.stocks.set(stocks);
       },
       error:(error)=>{
         console.log(error);

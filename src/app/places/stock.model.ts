@@ -1,10 +1,10 @@
-export interface Place {
+export interface Stock {
   id: string;
   title: string;
   image: {
     src: string;
     alt: string;
   };
-  lat: number;
-  lon: number;
+  des: string;
+  qty: number;
 }

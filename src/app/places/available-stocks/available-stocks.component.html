@@ -1,15 +1,15 @@
-<app-places-container title="Available Places">
+<app-places-container title="Available Stocks">
   @if (isFetching() && !error()){
-    <p class="fallback-text">Fetching Available Places.....</p>
+    <p class="fallback-text">Fetching Available Stocks.....</p>
   }  
   
   @if (error()){
     <p class="fallback-text">{{error()}}</p>
   }
 
-  @if (places()) {
-  <app-places [places]="places()!" />
-  } @else if (places()?.length === 0) {
+  @if (stocks()) {
+  <app-places [stocks]="stocks()!" />
+  } @else if (stocks()?.length === 0) {
   <p class="fallback-text">Unfortunately, no places could be found.</p>
   }
 

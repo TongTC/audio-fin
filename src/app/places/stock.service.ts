@@ -1,12 +1,12 @@
 import { Injectable, signal } from '@angular/core';
 
-import { Place } from './place.model';
+import { Stock } from './stock.model';
 
 @Injectable({
   providedIn: 'root',
 })
-export class PlacesService {
-  private userPlaces = signal<Place[]>([]);
+export class StocksService {
+  private userPlaces = signal<Stock[]>([]);
 
   loadedUserPlaces = this.userPlaces.asReadonly();
 
@@ -14,7 +14,7 @@ export class PlacesService {
 
   loadUserPlaces() {}
 
-  addPlaceToUserPlaces(place: Place) {}
+  // addPlaceToUserPlaces(place: Place) {}
 
-  removeUserPlace(place: Place) {}
+ //  removeUserPlace(place: Place) {}
 }

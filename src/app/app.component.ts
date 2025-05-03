@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 
-import { AvailablePlacesComponent } from './places/available-stocks/available-stocks.component';
-import { UserPlacesComponent } from './places/user-places/user-places.component';
+import { AvailableStocksComponent } from './places/available-stocks/available-stocks.component';
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
-  imports: [AvailablePlacesComponent, UserPlacesComponent],
+  imports: [AvailableStocksComponent],
 })
 export class AppComponent {}
