@@ -1,43 +1,47 @@
 [
   {
     "id": "1",
-    "title": "Transistor",
+    "pn": "xyzwdfsdsd",
+    "brand": "KOA",
     "image": {
       "src": "forest-waterfall.jpg",
       "alt": "A tranquil forest with a cascading waterfall amidst greenery."
     },
     "des": "asdadsasdasrerert",
-    "qty": 800
+    "qty": 5
   }
   ,  {
     "id": "2",
-    "title": "Transistor",
+    "pn": "xyzwdfsdsd",
+    "brand": "Samsung",
     "image": {
       "src": "forest-waterfall.jpg",
       "alt": "A tranquil forest with a cascading waterfall amidst greenery."
     },
     "des": "asdadsasdasrerert",
-    "qty": 800
+    "qty": 400
   }
   ,  {
     "id": "3",
-    "title": "Transistor",
+    "pn": "xyzwdfsdsd",
+    "brand": "Murata",
     "image": {
       "src": "forest-waterfall.jpg",
       "alt": "A tranquil forest with a cascading waterfall amidst greenery."
     },
     "des": "asdadsasdasrerert",
-    "qty": 800
+    "qty": 900
   }
   ,  {
     "id": "4",
-    "title": "Transistor",
+    "pn": "xyzwdfsdsd",
+    "brand": "Renesas",
     "image": {
       "src": "forest-waterfall.jpg",
       "alt": "A tranquil forest with a cascading waterfall amidst greenery."
     },
     "des": "asdadsasdasrerert",
-    "qty": 800
+    "qty": 10000 
   }
 
 

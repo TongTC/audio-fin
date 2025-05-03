@@ -1,10 +1,7 @@
 export interface Stock {
-  id: string;
-  title: string;
-  image: {
-    src: string;
-    alt: string;
-  };
-  des: string;
+  id:string;
+  mfg: string;
+  mpn: string;
   qty: number;
+  des:string;
 }

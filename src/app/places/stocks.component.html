@@ -1,13 +1,23 @@
-<ul>
+<table style="width:100% ">
+<tr>
+  <th>Number</th>
+  <th>Maker</th>
+  <th>Part Number</th>
+  <th>Description</th>
+  <th>Available Quantity (Pcs)</th>
+</tr>
+
+
   @for (stock of stocks(); track stock.id) {
-    <li class="place-item">
-      <button (click)="onSelectPlace(stock)">
-        <img
-          [src]="'http://localhost:3000/' + stock.image.src"
-          [alt]="stock.image.alt"
-        />
-        <h3>{{ stock.title }}</h3>
-      </button>
-    </li>
+
+      <tr>
+        <td>{{stock.id}}</td>
+        <td>{{stock.mfg}}</td>
+        <td>{{stock.mpn}}</td>
+        <td>{{stock.des}}</td>
+        <td>{{stock.qty}}</td>
+      </tr>
+
   }
-</ul>
+
+</table>
