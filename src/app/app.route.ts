@@ -1,0 +1,1 @@
+import { StocksComponent } from "./places/stocks.component";
