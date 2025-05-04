@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { AvailableStocksComponent } from './places/available-stocks/available-stocks.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 @Component({
@@ -8,6 +9,6 @@ import { AvailableStocksComponent } from './places/available-stocks/available-st
   standalone: true,
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
-  imports: [AvailableStocksComponent],
+  imports: [AvailableStocksComponent,NavbarComponent],
 })
 export class AppComponent {}
