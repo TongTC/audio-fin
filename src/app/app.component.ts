@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 
-import { AvailableStocksComponent } from './places/available-stocks/available-stocks.component';
+import { AvailableStocksComponent } from './stocks/available-stocks/available-stocks.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { RouterOutlet } from '@angular/router';
 
 
 @Component({
@@ -9,6 +10,6 @@ import { NavbarComponent } from './navbar/navbar.component';
   standalone: true,
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
-  imports: [AvailableStocksComponent,NavbarComponent],
+  imports: [AvailableStocksComponent,NavbarComponent,RouterOutlet],
 })
 export class AppComponent {}

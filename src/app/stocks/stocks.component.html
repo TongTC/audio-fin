@@ -1,6 +1,6 @@
 <table style="width:100% ">
 <tr>
-  <th>Number</th>
+  <th>Category</th>
   <th>Maker</th>
   <th>Part Number</th>
   <th>Description</th>
@@ -8,12 +8,12 @@
 </tr>
 
 
-  @for (stock of stocks(); track stock.id) {
+  @for (stock of stocks(); track stock.cate) {
 
       <tr>
-        <td>{{stock.id}}</td>
+        <td>{{stock.cate}}</td>
         <td>{{stock.mfg}}</td>
-        <td>{{stock.mpn}}</td>
+        <td>{{stock.pn}}</td>
         <td>{{stock.des}}</td>
         <td>{{stock.qty | number }}</td>
       </tr>

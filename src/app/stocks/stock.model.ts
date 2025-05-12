@@ -1,7 +1,7 @@
 export interface Stock {
-  id:string;
+  cate:string;
   mfg: string;
-  mpn: string;
+  pn: string;
   qty: number;
   des:string;
 }

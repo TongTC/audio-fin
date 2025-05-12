@@ -61,7 +61,7 @@ ul {
 }
 
 table, th, td {
-  border: 1px solid white;
+  border: 1px solid black;
 }
 th {
   text-align: left;

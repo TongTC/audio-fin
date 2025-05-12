@@ -1,8 +1,13 @@
 <app-lists-container title="Available Stocks">
+
+  <p class="text">
+    Please Search the component  by CTR+F
+  </p>
+
   @if (isFetching() && !error()){
     <p class="fallback-text">Fetching Available Stocks.....</p>
-  }  
-  
+  }
+
   @if (error()){
     <p class="fallback-text">{{error()}}</p>
   }
