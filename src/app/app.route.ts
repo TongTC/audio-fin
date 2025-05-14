@@ -6,7 +6,7 @@ import { ProductsdetailComponent } from './productsdetail/productsdetail.compone
 export const routes: Routes = [
   {path:'home',component:HomeComponent},
   {path:'allstock',component:AvailableStocksComponent},
-  {path:'detail',component:ProductsdetailComponent},
+  {path:'details',component:ProductsdetailComponent},
   {path:'',component:HomeComponent}
 ];
 //test

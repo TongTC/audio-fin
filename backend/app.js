@@ -18,14 +18,14 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get("/places", async (req, res) => {
+app.get("/stocks", async (req, res) => {
   await new Promise((resolve) => setTimeout(resolve, 3000));
 
   const fileContent = await fs.readFile("./data/stocks.json");
 
-  const placesData = JSON.parse(fileContent);
+  const stocksData = JSON.parse(fileContent);
 
-  res.status(200).json({ stocks: placesData });
+  res.status(200).json({ stocks: stocksData });
 });
 
 app.get("/user-places", async (req, res) => {
