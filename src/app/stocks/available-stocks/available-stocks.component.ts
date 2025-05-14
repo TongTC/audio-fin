@@ -24,7 +24,7 @@ export class AvailableStocksComponent implements OnInit{
   ngOnInit(){
     this.isFetching.set(true);
     const subscription = this.httpClient
-    .get<{stocks:Stock[]}>('http://localhost:3000/places')
+    .get<{stocks:Stock[]}>('http://localhost:3000/stocks')
     .pipe(
       map((resData) => resData.stocks))
     .subscribe({
