@@ -14,13 +14,13 @@ import { HttpClient } from '@angular/common/http';
   imports: [StocksComponent, ListsContainerComponent],
 })
 export class AvailableStocksComponent implements OnInit{
-  
+
   stocks = signal<Stock[] | undefined>(undefined);
   isFetching =signal(false);
   error =signal('');
   private httpClient = inject(HttpClient);
   private destroyRef = inject(DestroyRef);
-  //v
+  
   ngOnInit(){
     this.isFetching.set(true);
     const subscription = this.httpClient
