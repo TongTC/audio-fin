@@ -20,7 +20,7 @@ export class AvailableStocksComponent implements OnInit{
   error =signal('');
   private httpClient = inject(HttpClient);
   private destroyRef = inject(DestroyRef);
-  
+  //v
   ngOnInit(){
     this.isFetching.set(true);
     const subscription = this.httpClient
