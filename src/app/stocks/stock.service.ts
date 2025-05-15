@@ -16,5 +16,5 @@ export class StocksService {
 
   // addPlaceToUserPlaces(place: Place) {}
 
- //  removeUserPlace(place: Place) {}
+  //  removeUserPlace(place: Place) {}
 }
