@@ -19,7 +19,7 @@ app.use((req, res, next) => {
 });
 
 app.get("/stocks", async (req, res) => {
-  await new Promise((resolve) => setTimeout(resolve, 3000));
+  await new Promise((resolve) => setTimeout(resolve));
 
   const fileContent = await fs.readFile("./data/stocks.json");
 

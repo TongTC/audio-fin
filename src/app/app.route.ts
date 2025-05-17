@@ -8,14 +8,14 @@ export const routes: Routes = [
   {path:'home',component:HomeComponent},
   {path:'allstock',component:AvailableStocksComponent},
   {path:'details',component:ProductsdetailComponent,
-     children:[
-       {
-         path:'show',
-         component:Detai
-       }
-     ]
+    children:[
+      {
+        path:'show',
+        component:detail
+      }
+    ]
   },
   {path:'',component:HomeComponent},
-  {path:'**',component:NotfoundComponent}
+   {path:'**',component:NotfoundComponent}
 ];
-//test
+   //test
