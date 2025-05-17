@@ -8,12 +8,12 @@ export const routes: Routes = [
   {path:'home',component:HomeComponent},
   {path:'allstock',component:AvailableStocksComponent},
   {path:'details',component:ProductsdetailComponent,
-    children:[
-      {
-        path:'show',
-        component:detail
-      }
-    ]
+     children:[
+       {
+         path:'show',
+         component:Detai
+       }
+     ]
   },
   {path:'',component:HomeComponent},
   {path:'**',component:NotfoundComponent}
