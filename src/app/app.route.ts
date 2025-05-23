@@ -7,7 +7,14 @@ import { NotfoundComponent } from './notfound/notfound.component';
 export const routes: Routes = [
   {path:'home',component:HomeComponent},
   {path:'allstock',component:AvailableStocksComponent},
-  {path:'details/:stockId',component:ProductsdetailComponent},
+  {path:'details',component:ProductsdetailComponent,
+    children:[
+      {
+        // path:'show',
+        // component:detail
+      }
+    ]
+  },
   {path:'',component:HomeComponent},
    {path:'**',component:NotfoundComponent}
 ];

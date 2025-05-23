@@ -10,5 +10,5 @@ import { Component,input} from '@angular/core';
 })
 export class ProductsdetailComponent {
   stockId=input.required<string>();
-  private stocksService=inject()
+  // private stocksService=inject()
 }

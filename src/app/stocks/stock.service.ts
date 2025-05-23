@@ -1,5 +1,7 @@
+
 import { Injectable, signal,inject } from '@angular/core';
 import { map } from 'rxjs';
+
 import { Stock } from './stock.model';
 import { HttpClient } from '@angular/common/http';
 
@@ -8,8 +10,15 @@ import { HttpClient } from '@angular/common/http';
 })
 export class StocksService {
   
+
   private httpClient = inject(HttpClient);
+
   private userPlaces = signal<Stock[]>([]);
+  stocks = signal<Stock[] | undefined>(undefined);
+  error =signal('');
+  isFetching=signal(false);
+  private httpClient = inject(HttpClient);
+  private destroyRef = inject(DestroyRef);
 
   stocks = signal<Stock[] | undefined>(undefined);
   isFetching =signal(false);
@@ -18,7 +27,32 @@ export class StocksService {
 
   loadAvailablePlaces() {}
 
-  loadUserPlaces() {}
+  loadstocks() {
+
+        this.isFetching.set(true);
+        const subscription = this.httpClient
+        .get<{stocks:Stock[]}>('http://localhost:3000/stocks')
+        .pipe(
+          map((resData) => resData.stocks))
+        .subscribe({
+          next: (stocks) =>{
+            console.log(stocks);
+            this.stocks.set(stocks);
+          },
+          error:(error)=>{
+            console.log(error);
+            this.error.set("Something went wrong fetching please try again");
+          },
+          complete:() => {
+            this.isFetching.set(false);
+          }
+        });
+        this.destroyRef.onDestroy( () => {
+            subscription.unsubscribe();
+        }
+        );
+      
+  }
 
   private fetchStocks(){
     this.httpClient
