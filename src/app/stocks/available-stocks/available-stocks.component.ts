@@ -1,5 +1,5 @@
 import { Component, DestroyRef, inject, OnInit, signal } from '@angular/core';
-import { catchError, map, throwError } from 'rxjs';
+import {  map } from 'rxjs';
 import { Stock } from '../stock.model';
 import { StocksComponent } from '../stocks.component';
 import { ListsContainerComponent } from '../lists-container/lists-container.component';
@@ -23,6 +23,7 @@ export class AvailableStocksComponent implements OnInit{
 
   ngOnInit(){
     this.isFetching.set(true);
+    
     const subscription = this.httpClient
     .get<{stocks:Stock[]}>('http://localhost:3000/stocks')
     .pipe(

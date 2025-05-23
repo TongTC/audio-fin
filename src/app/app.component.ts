@@ -4,12 +4,11 @@ import { AvailableStocksComponent } from './stocks/available-stocks/available-st
 import { NavbarComponent } from './navbar/navbar.component';
 import { RouterOutlet } from '@angular/router';
 
-
 @Component({
   selector: 'app-root',
   standalone: true,
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
-  imports: [AvailableStocksComponent,NavbarComponent,RouterOutlet],
+  imports: [AvailableStocksComponent, NavbarComponent, RouterOutlet],
 })
 export class AppComponent {}
