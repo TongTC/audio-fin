@@ -1,6 +1,6 @@
 
-import { Injectable, signal,inject } from '@angular/core';
-import { map } from 'rxjs';
+import { Injectable, signal,inject, DestroyRef } from '@angular/core';
+import { catchError, map, throwError } from 'rxjs';
 
 import { Stock } from './stock.model';
 import { HttpClient } from '@angular/common/http';
@@ -17,63 +17,28 @@ export class StocksService {
   stocks = signal<Stock[] | undefined>(undefined);
   error =signal('');
   isFetching=signal(false);
-  private httpClient = inject(HttpClient);
+ 
   private destroyRef = inject(DestroyRef);
-
-  stocks = signal<Stock[] | undefined>(undefined);
-  isFetching =signal(false);
 
   loadedUserPlaces = this.userPlaces.asReadonly();
 
-  loadAvailablePlaces() {}
+  loadAvailableStocks() {
+    return this.fetchStocks(
+      'http://localhost:3000/stocks',
+      'something went wrong fetching.'
+    );
+  }
 
-  loadstocks() {
-
-        this.isFetching.set(true);
-        const subscription = this.httpClient
-        .get<{stocks:Stock[]}>('http://localhost:3000/stocks')
-        .pipe(
-          map((resData) => resData.stocks))
-        .subscribe({
-          next: (stocks) =>{
-            console.log(stocks);
-            this.stocks.set(stocks);
-          },
-          error:(error)=>{
-            console.log(error);
-            this.error.set("Something went wrong fetching please try again");
-          },
-          complete:() => {
-            this.isFetching.set(false);
-          }
-        });
-        this.destroyRef.onDestroy( () => {
-            subscription.unsubscribe();
-        }
-        );
+  private fetchStocks(url:string,errorMessage:string) {
       
-  }
-
-  private fetchStocks(){
-    this.httpClient
-    .get<{stocks:Stock[]}>('http://localhost:3000/stocks')
-    .pipe(
-      map((resData) => resData.stocks))
-    .subscribe({
-      next: (stocks) =>{
-        console.log(stocks);
-        this.stocks.set(stocks);
-      },
-      error:(error)=>{
+    return this.httpClient.get<{stocks:Stock[]}>(url).pipe(
+      map((resData)=>resData.stocks),
+      catchError((error)=>{
         console.log(error);
-        this.error.set("Something went wrong fetching please try again");
-      },
-      complete:() => {
-        this.isFetching.set(false);
-      }
-    });
+        return throwError(()=> new Error(errorMessage));
+      }))
+        
   }
-
   // addPlaceToUserPlaces(place: Place) {}
 
   //  removeUserPlace(place: Place) {}
