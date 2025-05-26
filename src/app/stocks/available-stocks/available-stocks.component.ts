@@ -22,28 +22,30 @@ export class AvailableStocksComponent implements OnInit{
   private destroyRef = inject(DestroyRef);
 
   ngOnInit(){
-    this.isFetching.set(true);
+
     
-    const subscription = this.httpClient
-    .get<{stocks:Stock[]}>('http://localhost:3000/stocks')
-    .pipe(
-      map((resData) => resData.stocks))
-    .subscribe({
-      next: (stocks) =>{
-        console.log(stocks);
-        this.stocks.set(stocks);
-      },
-      error:(error)=>{
-        console.log(error);
-        this.error.set("Something went wrong fetching please try again");
-      },
-      complete:() => {
-        this.isFetching.set(false);
-      }
-    });
-    this.destroyRef.onDestroy( () => {
-        subscription.unsubscribe();
-    }
-    );
+
+    // this.isFetching.set(true);
+    // const subscription = this.httpClient
+    // .get<{stocks:Stock[]}>('http://localhost:3000/stocks')
+    // .pipe(
+    //   map((resData) => resData.stocks))
+    // .subscribe({
+    //   next: (stocks) =>{
+    //     console.log(stocks);
+    //     this.stocks.set(stocks);
+    //   },
+    //   error:(error)=>{
+    //     console.log(error);
+    //     this.error.set("Something went wrong fetching please try again");
+    //   },
+    //   complete:() => {
+    //     this.isFetching.set(false);
+    //   }
+    // });
+    // this.destroyRef.onDestroy( () => {
+    //     subscription.unsubscribe();
+    // }
+    // );
   }
 }
