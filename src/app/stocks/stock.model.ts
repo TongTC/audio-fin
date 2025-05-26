@@ -3,6 +3,6 @@ export interface Stock {
   cate:string;
   mfg: string;
   pn: string;
-  qty: number;
+  qty: string;
   des:string;
 }

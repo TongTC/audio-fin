@@ -18,7 +18,7 @@
     <td>{{ stock.pn }}</td>
     <td>{{ stock.des }}</td>
     <td>{{ stock.qty | number }}</td>
-    <td><a [routerLink]="['/detail/',stock.id]">See</a></td>
+    <td><a [routerLink]="'/detail/' + stock.id">See</a></td>
   </tr>
 
   }

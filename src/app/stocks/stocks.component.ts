@@ -9,6 +9,7 @@ import { RouterLink } from '@angular/router';
   imports: [DecimalPipe,RouterLink],
   templateUrl: './stocks.component.html',
   styleUrl: './stocks.component.css',
+ 
 })
 export class StocksComponent {
   stocks = input.required<Stock[]>();
