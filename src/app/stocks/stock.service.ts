@@ -22,6 +22,16 @@ export class StocksService {
 
   loadedUserPlaces = this.userPlaces.asReadonly();
 
+
+
+
+  loadAvailableStocksbyId(id:string){
+      
+    
+    return
+  }
+
+
   loadAvailableStocks() {
     return this.fetchStocks(
       'http://localhost:3000/stocks',
