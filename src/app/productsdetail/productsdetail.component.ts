@@ -15,7 +15,7 @@ import { AllStockComponent } from '../stock/allstock.component';
 @Component({
   selector: 'app-productsdetail',
   standalone: true,
-  imports: [DecimalPipe,RouterLink,AllStockComponent],
+  imports: [DecimalPipe,RouterLink],
   templateUrl: './productsdetail.component.html',
   styleUrl: './productsdetail.component.css',
 })
@@ -45,7 +45,7 @@ export class ProductsdetailComponent implements OnInit {
     // this.isFetching.set(true);
     const subscription =
       this.stocksService.loadAvailableStocks().subscribe({
-        next: (stocks$) => {
+        next: (stocks$:any) => {
           //  console.log(stocks$);
           this.sig_stocks.set(stocks$);
           this.a = stocks$;

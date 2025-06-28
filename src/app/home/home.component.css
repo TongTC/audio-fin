@@ -1,5 +1,12 @@
-p{text-align: left;}
-.row{margin-top: 10px;}
+p {
+  text-align: left;
+}
+h1{
+  font-size: 5vw;
+}
+.row {
+  margin-top: 10px;
+}
 
 .center {
   display: block;

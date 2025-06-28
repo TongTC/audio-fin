@@ -34,7 +34,7 @@ export class StocksService {
   
   loadAvailableStocks(){
     return this.fetchStocks(
-      'https://excess-5c57d-default-rtdb.asia-southeast1.firebasedatabase.app/post.json',          //url of backend
+      'https://excess-5c57d-default-rtdb.asia-southeast1.firebasedatabase.app/stocks.json',          //url of backend
       'something went wrong fetching.'         //when error
     );
   }

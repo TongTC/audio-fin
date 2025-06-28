@@ -4,6 +4,7 @@ import { StocksService } from '../stock.service';
 import { DecimalPipe } from '@angular/common';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { Cate, Stock } from '../../model/stock.model';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-available-stocks',
@@ -20,6 +21,7 @@ export class AvailableStocksComponent implements OnInit{
   private stocksService =inject(StocksService);
   sig_error =signal('');
   private destroyRef = inject(DestroyRef);
+  private http=inject(HttpClient)
   private a:Stock[]=[];
   d='';
   cates:Cate[]=[
@@ -64,19 +66,24 @@ export class AvailableStocksComponent implements OnInit{
  
   
   ngOnInit(){
-
+    this.fetchStocks();
     this.isFetching.set(true);
+    
+    
+    
     const subscription = 
       this.stocksService.loadAvailableStocks().subscribe({
-        next:(stocks$)=>{
+        next:(stocks$:any)=>{
           this.sig_stocks.set(stocks$);
           this.a=stocks$;
+          console.log(stocks$);
         },
         error:(error:Error)=>{
           this.sig_error.set(error.message);
         },
         complete:()=>{
           this.isFetching.set(false);
+
         }
       });
       
@@ -91,6 +98,16 @@ export class AvailableStocksComponent implements OnInit{
         this.sig_stocks.set(this.a.filter(m => m.grp === this.d))
       
     }
+
+    private fetchStocks(){
+    this.http.get('https://excess-5c57d-default-rtdb.asia-southeast1.firebasedatabase.app/stocks.json')
+    //this.http.get('http://localhost:3000/stocks')
+    .subscribe(stocks=>{
+      console.log(stocks);
+    });
+  }
+
+
   }
     
 
