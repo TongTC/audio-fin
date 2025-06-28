@@ -11,4 +11,7 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.css',
   imports: [AvailableStocksComponent, NavbarComponent, RouterOutlet],
 })
-export class AppComponent {}
+export class AppComponent {
+    
+
+}

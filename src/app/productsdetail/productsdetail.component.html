@@ -1,32 +1,62 @@
-<p>productsdetail works!</p>
+<h2>Stock Details</h2>
+
 <div class="container text-center">
-  <div class="row">
-    <div class="col">
-      Column
+  <div class="row ">
+    <div class="col ">
+      <!-- <table style="width: 100%">
+        <tr> -->
+          <img  width="150"
+              [src]="'http://localhost:3000/'+ imgSrc" 
+              [alt]="imgAlt"
+          />
+        <!-- </tr> -->
+      <!-- </table> -->
     </div>
+    <!-- Column2 -->
     <div class="col">
-      
+      <table style="width: 100%">
+        <tr>
+          <th>Category</th>
+
+          <td>{{ Cate }}</td>
+        </tr>
+        <tr>
+          <th>Part Number</th>
+          <td>{{ Pn }}</td>
+        </tr>
+        <tr>
+          <th>Maker</th>
+          <td>{{ Mfg }}</td>
+        </tr>
+        <tr>
+          <th>Description</th>
+          <td>{{ Des }}</td>
+        </tr>
+          <tr>
+          <th>Info Link</th>
+
+          <td>
+            @if(Lnk!){
+              <a [href]="Lnk" target="_blank">Click Here</a>
+            }
+            
+          </td>
+        </tr>
+
+        <tr>
+          <th>Available Quantity</th>
+          <td>{{ Qty | number }} Pcs</td>
+        </tr>
+      </table>
+
       <div class="row">
-      <div class="col">ฟหกฟหก</div>
-      <div class="col">ฟหกฟหก</div>
-      </div>
-    
+      
+      <div class="col mt-3"><a routerLink="/stock">Get the quote</a></div>
+    </div>
+
    
-    <div class="col">
-      {{id}}
-    </div>
-    <div class="col">
-      {{id}}
-    </div>
-    <div class="col">
-      {{id}}
-    </div>
-    <div class="col">
-      {{id}}
-    </div>
-    </div>
-
+    
   </div>
-</div>
 
- <p>ID {{id}}</p>  
+  <div class="row"><a routerLink="/stock">Back to stock</a></div>
+</div>

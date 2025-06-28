@@ -13,9 +13,6 @@ import { RouterLink } from '@angular/router';
 })
 export class StocksComponent {
   stocks = input.required<Stock[]>();
-  selectPlace = output<Stock>();
-
-  onSelectPlace(stock: Stock) {
-    this.selectPlace.emit(stock);
-  }
+  
+  
 }

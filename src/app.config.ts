@@ -2,6 +2,7 @@ import { provideHttpClient } from "@angular/common/http";
 import { ApplicationConfig } from "@angular/core";
 import { provideRouter, withComponentInputBinding, withRouterConfig } from "@angular/router";
 import { routes } from "./app/app.route";
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 
 export const appConfig:ApplicationConfig={
@@ -12,6 +13,6 @@ export const appConfig:ApplicationConfig={
       withRouterConfig({ paramsInheritanceStrategy: 'always' })
       
     ),
-    provideHttpClient(),
+    provideHttpClient(), provideAnimationsAsync('noop'),
   ],
 }

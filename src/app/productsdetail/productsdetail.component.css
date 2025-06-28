@@ -1,7 +1,16 @@
- .col{
-    border: groove;
+table, tr, td {
+  border: 1px solid black;
+  
+}
+th{
+    text-align: left;
+    background:#e2e2e2
 }
 
-.row {
-    border: groove;
+
+
+img {
+  width: 50%;
+  height: auto;
+  
 }
