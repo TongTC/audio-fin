@@ -3,6 +3,7 @@
     <div class="col-2 border">
 <div class="">
   <div class="">
+    <h6>Filter By Group</h6>
   @for(cate of cates; track cate.name){
     <button class="button" (click)="filter(cate.name)">{{cate.name}}</button>
   }
