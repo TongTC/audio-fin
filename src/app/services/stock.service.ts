@@ -42,7 +42,7 @@ export class StocksService {
   private fetchStocks(url: string, errorMessage: string) {
 
     return this.httpClient.get<{ stocks: Stock[] }>(url).pipe(
-      map((resData) => resData.stocks),
+      map((resData) => resData),
       catchError((error) => {
         console.log(error);
         return throwError(() => new Error(errorMessage));

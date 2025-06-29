@@ -46,7 +46,7 @@ export class ProductsdetailComponent implements OnInit {
     const subscription =
       this.stocksService.loadAvailableStocks().subscribe({
         next: (stocks$:any) => {
-          //  console.log(stocks$);
+          console.log(stocks$);
           this.sig_stocks.set(stocks$);
           this.a = stocks$;
         },
