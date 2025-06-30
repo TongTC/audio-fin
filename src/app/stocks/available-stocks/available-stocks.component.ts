@@ -5,13 +5,14 @@ import { DecimalPipe } from '@angular/common';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { Cate, Stock } from '../../model/stock.model';
 import { HttpClient } from '@angular/common/http';
+import { SearchboxComponent } from '../../searchbox/searchbox.component';
 
 @Component({
   selector: 'app-available-stocks',
   standalone: true,
   templateUrl: './available-stocks.component.html',
   styleUrl: './available-stocks.component.css',
-  imports: [ ListsContainerComponent,DecimalPipe,RouterLink],
+  imports: [ ListsContainerComponent,DecimalPipe,RouterLink,SearchboxComponent],
 })
 
 export class AvailableStocksComponent implements OnInit{

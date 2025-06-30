@@ -1,0 +1,11 @@
+<p>searchbox works!</p>
+          <input class="m-1" type="text" placeholder="Search..."  #searchText>
+            <button class="primary" type="button" (click)="applySearch(searchText.value)">Search</button>
+
+      <div *ngFor="let item of filteredData">
+      <p>{{ item.pn }}</p>
+      <p>{{ item.des }}</p>
+    </div>
+    <div *ngIf="!filteredData.length">
+      <p>No results found.</p>
+    </div>
