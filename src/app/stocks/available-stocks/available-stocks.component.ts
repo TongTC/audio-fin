@@ -1,123 +1,126 @@
 import { Component, DestroyRef, inject, input, OnInit, signal } from '@angular/core';
 import { ListsContainerComponent } from '../lists-container/lists-container.component';
 import { StocksService } from '../stock.service';
-import { DecimalPipe } from '@angular/common';
+import { CommonModule, DecimalPipe } from '@angular/common';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { Cate, Stock } from '../../model/stock.model';
 import { HttpClient } from '@angular/common/http';
-import { SearchboxComponent } from '../../searchbox/searchbox.component';
+
 
 @Component({
   selector: 'app-available-stocks',
   standalone: true,
   templateUrl: './available-stocks.component.html',
   styleUrl: './available-stocks.component.css',
-  imports: [ ListsContainerComponent,DecimalPipe,RouterLink,SearchboxComponent],
+  imports: [ListsContainerComponent, DecimalPipe, RouterLink, CommonModule],
 })
 
-export class AvailableStocksComponent implements OnInit{
-  filterList:string[]=['a','b'];
+export class AvailableStocksComponent implements OnInit {
+  filterList: string[] = ['a', 'b'];
   sig_stocks = signal<Stock[] | undefined>(undefined);
-  isFetching =signal(false);  // initial signal for isFetching
-  private stocksService =inject(StocksService);
-  forfilterstock: Stock[]=[]
-  filteredstocks :Stock[]=[]
-  sig_error =signal('');
+  isFetching = signal(false);  // initial signal for isFetching
+  private stocksService = inject(StocksService);
+  forfilterstock: Stock[] = [];
+  public filteredstocks: Stock[] |any = [];
+  filit: Stock[] = [];
+  sig_error = signal('');
   private destroyRef = inject(DestroyRef);
-  private http=inject(HttpClient)
-  private a:Stock[]=[];
-  d='';
-  cates:Cate[]=[
-  {name:"wire"},
-{name:"connector"},
-{name:"antenna"},
-{name:"base"},
-{name:"battery"},
-{name:"bluetooth"},
-{name:"bobbin"},
-{name:"capacitor"},
-{name:"fuse"},
-{name:"inductor"},
-{name:"clip"},
-{name:"contact"},
-{name:"coppertape"},
-{name:"covertape"},
-{name:"crystal"},
-{name:"diode"},
-{name:"others"},
-{name:"head"},
-{name:"ic"},
-{name:"jumper"},
-{name:"led"},
-{name:"resistor"},
-{name:"transistor"},
-{name:"ntc"},
-{name:"opto"},
-{name:"ptc"},
-{name:"relay"},
-{name:"ferrite"},
-{name:"scr"},
-{name:"sensor"},
-{name:"spacer"},
-{name:"sw"},
-{name:"tape"},
-{name:"varistor"},
-{name:"wave"},
-{name:"oscillator"},
+  private http = inject(HttpClient)
+  private a: Stock[] = [];
+  d = '';
+  cates: Cate[] = [
+    { name: "wire" },
+    { name: "connector" },
+    { name: "antenna" },
+    { name: "base" },
+    { name: "battery" },
+    { name: "bluetooth" },
+    { name: "bobbin" },
+    { name: "capacitor" },
+    { name: "fuse" },
+    { name: "inductor" },
+    { name: "clip" },
+    { name: "contact" },
+    { name: "coppertape" },
+    { name: "covertape" },
+    { name: "crystal" },
+    { name: "diode" },
+    { name: "others" },
+    { name: "head" },
+    { name: "ic" },
+    { name: "jumper" },
+    { name: "led" },
+    { name: "resistor" },
+    { name: "transistor" },
+    { name: "ntc" },
+    { name: "opto" },
+    { name: "ptc" },
+    { name: "relay" },
+    { name: "ferrite" },
+    { name: "scr" },
+    { name: "sensor" },
+    { name: "spacer" },
+    { name: "sw" },
+    { name: "tape" },
+    { name: "varistor" },
+    { name: "wave" },
+    { name: "oscillator" },
 
   ]
- 
-  
-  ngOnInit(){
+
+
+  ngOnInit() {
     this.fetchStocks();
     this.isFetching.set(true);
-    
-    
-    
-    const subscription = 
+
+
+
+    const subscription =
       this.stocksService.loadAvailableStocks().subscribe({
-        next:(stocks$:any)=>{
+        next: (stocks$:Stock[]) => {
           this.sig_stocks.set(stocks$);
-          this.forfilterstock=stocks$;
-          this.a=stocks$;
-          console.log(stocks$);
+          this.forfilterstock = stocks$;
+          this.a = stocks$;
+          console.log(this.filteredstocks);
         },
-        error:(error:Error)=>{
+        error: (error: Error) => {
           this.sig_error.set(error.message);
         },
-        complete:()=>{
+        complete: () => {
           this.isFetching.set(false);
 
         }
       });
-      
-      this.destroyRef.onDestroy(()=>{
-        subscription.unsubscribe();
-      });
-      
-    }
 
-    filter(grp:string){
-        this.d=grp;
-        this.sig_stocks.set(this.a.filter(m => m.grp === this.d))
-      
-    }
-
-    private fetchStocks(){
-    this.http.get('https://excess-5c57d-default-rtdb.asia-southeast1.firebasedatabase.app/stocks.json')
-    //this.http.get('http://localhost:3000/stocks')
-    .subscribe(stocks=>{
-      console.log(stocks);
+    this.destroyRef.onDestroy(() => {
+      subscription.unsubscribe();
     });
-  }
-    filterResults(text:string){
-      if (!text) this.filteredstocks = this.forfilterstock;
 
-      this.filteredstocks = this.forfilterstock.filter(
-        filit =>filit?.pn.toLowerCase().includes(text.toLowerCase())  
-      );
-        this.sig_stocks.set(this.filteredstocks);
-    }
   }
-    
+
+  filter(grp: string) {
+    this.d = grp;
+    this.sig_stocks.set(this.a.filter(m => m.grp === this.d))
+
+  }
+
+  private fetchStocks() {
+    this.http.get('https://excess-5c57d-default-rtdb.asia-southeast1.firebasedatabase.app/stocks.json')
+      //this.http.get('http://localhost:3000/stocks')
+      .subscribe(stocks => {
+        // console.log(stocks);
+      });
+  }
+  filterResults(text: string) {
+    if (!text) {
+      this.filteredstocks = this.forfilterstock;
+      return;
+    }
+
+    this.filteredstocks = this.forfilterstock.filter(
+      (tt) => tt?.pn.toLowerCase().includes(text.toLowerCase())
+    );
+  }
+}
+
 

@@ -18,10 +18,12 @@
       <app-lists-container title="Available Stocks">
 
   <form>
-  <input type="text" placeholder="" #varfilter>
+  <input type="text" placeholder="asdasd" #varfilter>
   <button class="primary m-1" type="button" (click)="filterResults(varfilter.value)"> Search </button>
+  <p>{{filteredstocks}}aa</p>
   </form>
-
+  
+  
   <p class="text">
     Please Search the component  by CTR+F
   </p>
