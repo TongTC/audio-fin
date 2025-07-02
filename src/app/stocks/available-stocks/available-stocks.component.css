@@ -71,12 +71,15 @@ ul {
 
 table, th, td {
   border: 1px solid black;
+  font-size: 1vw;
 }
 th {
   text-align: left;
   background-color:lightgray;
 }
-
+.vw{
+  font-size: 1vw;
+}
 
 td {
   text-align: left;
