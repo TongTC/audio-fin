@@ -20,6 +20,8 @@ export class AvailableStocksComponent implements OnInit{
   sig_stocks = signal<Stock[] | undefined>(undefined);
   isFetching =signal(false);  // initial signal for isFetching
   private stocksService =inject(StocksService);
+  forfilterstock: Stock[]=[]
+  filteredstocks :Stock[]=[]
   sig_error =signal('');
   private destroyRef = inject(DestroyRef);
   private http=inject(HttpClient)
@@ -76,6 +78,7 @@ export class AvailableStocksComponent implements OnInit{
       this.stocksService.loadAvailableStocks().subscribe({
         next:(stocks$:any)=>{
           this.sig_stocks.set(stocks$);
+          this.forfilterstock=stocks$;
           this.a=stocks$;
           console.log(stocks$);
         },
@@ -107,6 +110,15 @@ export class AvailableStocksComponent implements OnInit{
       console.log(stocks);
     });
   }
+    filterResults(text:string){
+      if (!text) this.filteredstocks = this.forfilterstock;
+
+      this.filteredstocks = this.forfilterstock.filter(
+        filit =>filit?.pn.toLowerCase().includes(text.toLowerCase())  
+      );
+        this.sig_stocks.set(this.filteredstocks);
+    }
+      
 
 
   }

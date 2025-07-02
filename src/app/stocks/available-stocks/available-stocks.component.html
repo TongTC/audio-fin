@@ -10,9 +10,18 @@
   </div>
 </div>
     </div>
+ 
     <div class="col-10 border">
+      <div>
+
+      </div>
       <app-lists-container title="Available Stocks">
-             <app-searchbox/>
+
+  <form>
+  <input type="text" placeholder="" #varfilter>
+  <button class="primary m-1" type="button" (click)="filterResults(varfilter.value)"> Search </button>
+  </form>
+
   <p class="text">
     Please Search the component  by CTR+F
   </p>
