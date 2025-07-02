@@ -118,9 +118,6 @@ export class AvailableStocksComponent implements OnInit{
       );
         this.sig_stocks.set(this.filteredstocks);
     }
-      
-
-
   }
     
 
