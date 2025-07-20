@@ -77,7 +77,7 @@ export class AvailableStocksComponent implements OnInit {
 
     const subscription =
       this.stocksService.loadAvailableStocks().subscribe({
-        next: (stocks$:Stock[]) => {
+        next: (stocks$:any) => {
           this.sig_stocks.set(stocks$);
           this.forfilterstock = stocks$;
           this.a = stocks$;
