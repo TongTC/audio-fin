@@ -16,7 +16,7 @@ export class SearchboxComponent {
        searchTerm: string = '';
        sig_error =signal('');
        sig_stocks = signal<Stock[] | undefined>(undefined);
-       items:Stock[]=[] 
+       items:Stock[]=[] ;
       constructor(
         private destroyRef:DestroyRef,
         private stocksService:StocksService) {
