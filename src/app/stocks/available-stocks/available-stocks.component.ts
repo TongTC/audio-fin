@@ -2,9 +2,10 @@ import { Component, DestroyRef, inject, input, OnInit, signal } from '@angular/c
 import { ListsContainerComponent } from '../lists-container/lists-container.component';
 import { StocksService } from '../stock.service';
 import { CommonModule, DecimalPipe } from '@angular/common';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { Cate, Stock } from '../../model/stock.model';
 import { HttpClient } from '@angular/common/http';
+import { SearchboxComponent } from '../../searchbox/searchbox.component';
 
 
 @Component({
@@ -12,22 +13,36 @@ import { HttpClient } from '@angular/common/http';
   standalone: true,
   templateUrl: './available-stocks.component.html',
   styleUrl: './available-stocks.component.css',
-  imports: [ListsContainerComponent, DecimalPipe, RouterLink, CommonModule],
+  imports: [ListsContainerComponent, DecimalPipe, RouterLink, CommonModule,SearchboxComponent],
 })
 
 export class AvailableStocksComponent implements OnInit {
-  filterList: string[] = ['a', 'b'];
+
   sig_stocks = signal<Stock[] | undefined>(undefined);
   isFetching = signal(false);  // initial signal for isFetching
   private stocksService = inject(StocksService);
   forfilterstock: Stock[] = [];
-  public filteredstocks: Stock[] |any = [];
+  count:number = 8;
+  private filteredstocks: Stock[] |any = [];
   filit: Stock[] = [];
   sig_error = signal('');
   private destroyRef = inject(DestroyRef);
   private http = inject(HttpClient)
   private a: Stock[] = [];
   d = '';
+  gg = '';
+  shuffleArray<T>(array: T[]): T[] {
+  return array
+    .map(value => ({ value, sort: Math.random() }))
+    .sort((a, b) => a.sort - b.sort)
+    .map(({ value }) => value);
+}
+  get shuffledStocks(): Stock[] {
+  const stocks = this.sig_stocks();
+  return stocks ? this.shuffleArray(stocks) : [];
+  }
+
+
   cates: Cate[] = [
     { name: "wire" },
     { name: "connector" },
@@ -72,7 +87,7 @@ export class AvailableStocksComponent implements OnInit {
   ngOnInit() {
     this.fetchStocks();
     this.isFetching.set(true);
-
+    console.log(this.shuffledStocks);
 
 
     const subscription =
@@ -97,6 +112,10 @@ export class AvailableStocksComponent implements OnInit {
     });
 
   }
+  click(text: string) {
+    
+    this.gg=text;
+  }
 
   filter(grp: string) {
     this.d = grp;
@@ -111,16 +130,7 @@ export class AvailableStocksComponent implements OnInit {
         // console.log(stocks);
       });
   }
-  filterResults(text: string) {
-    if (!text) {
-      this.filteredstocks = this.forfilterstock;
-      return;
-    }
 
-    this.filteredstocks = this.forfilterstock.filter(
-      (tt) => tt?.pn.toLowerCase().includes(text.toLowerCase())
-    );
-  }
 }
 
 

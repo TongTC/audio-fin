@@ -1,11 +1,40 @@
-<p>searchbox works!</p>
-          <input class="m-1" type="text" placeholder="Search..."  #searchText>
-            <button class="primary" type="button" (click)="applySearch(searchText.value)">Search</button>
+<form (ngSubmit)="filterResults(filter.value)">
+          <input type="text" placeholder="Search it here" #filter />
+             <button class="primary" type="button" (click)="filterResults(filter.value)">Search</button>
+</form>
+<!-- Correct -->
+<div *ngFor="let j of filteredData">
+  <!-- content here -->
+</div>
 
-      <div *ngFor="let item of filteredData">
-      <p>{{ item.pn }}</p>
-      <p>{{ item.des }}</p>
-    </div>
-    <div *ngIf="!filteredData.length">
-      <p>No results found.</p>
-    </div>
+
+<br>
+@if(tt){
+  <table class="table table-striped">
+    <thead>
+  <tr>
+    <th scope="col">ID</th>
+    <th scope="col">Category</th>
+    <th scope="col">Maker</th>
+    <th scope="col">Part Number</th>
+    <th scope="col">Description</th>
+    <th scope="col">Available(Pcs)</th>
+    <th scope="col">Details</th>
+  </tr>
+</thead>
+<tbody>
+  @for(j of filteredData; track $index) {
+  <tr>
+    <td>{{ j.id }}</td>
+    <td>{{ j.cate }}</td>
+    <td>{{ j.mfg }}</td>
+    <td>{{ j.pn }}</td>
+    <td>{{ j.des }}</td>
+     <td>{{ j.qty | number }}</td>
+    <td><a [routerLink]="'details/'+ j.grp +'/'+j.id">See</a></td>
+  </tr>
+}
+
+</tbody>
+</table>
+}

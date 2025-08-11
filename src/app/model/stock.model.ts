@@ -11,6 +11,8 @@ export interface Stock {
   lnk:string;
   qty: number;
   des:string;
+  meta:string;
+  stockplace:string;
 }
 
 export interface Cate{

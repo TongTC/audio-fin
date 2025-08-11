@@ -12,23 +12,12 @@
     </div>
  
     <div class="col-10 border">
-      <div>
 
-      </div>
-      <app-lists-container title="Available Stocks">
+  <app-lists-container title="Available Stocks">
 
-  <form>
-  <input type="text" placeholder="asdasd" #varfilter>
-  <button class="primary m-1" type="button" (click)="filterResults(varfilter.value)"> Search </button>
-  <p>{{filteredstocks}}aa</p>
-  </form>
-  
-  
-  <p class="text">
-    Please Search the component  by CTR+F
-  </p>
+<app-searchbox (searchText)="click($event)"></app-searchbox>
 
-  @if (isFetching() && !sig_error()){
+  @if (isFetching() && !sig_error()) {
     <p class="fallback-text">Fetching Available Stocks.....</p>
   }
 
@@ -36,20 +25,24 @@
     <p class="fallback-text">{{sig_error()}}</p>
   }
   
-  @if (sig_stocks()) {
-
-  <table style="width: 100%">
+  @if (sig_stocks()&& !gg) {
+  <p>OK</p>
+   
+  <table class="table table-striped">
+    <thead>
   <tr>
-    <th>ID</th>
-    <th>Category</th>
-    <th>Maker</th>
-    <th>Part Number</th>
-    <th>Description</th>
-    <th>Available(Pcs)</th>
-    <th>Details</th>
+    <th scope="col">IDs</th>
+    <th scope="col">Category</th>
+    <th scope="col">Maker</th>
+    <th scope="col">Part Number</th>
+    <th scope="col">Description</th>
+    <th scope="col">Available(Pcs)</th>
+    <th scope="col">Details</th>
   </tr>
+    </thead>
+    <tbody>
 
-  @for (stock of sig_stocks(); track stock.id) {
+  @for (stock of shuffledStocks | slice:0:10; track stock.id) {
 
 
   <tr>
@@ -63,10 +56,12 @@
   </tr>
 
   }
-</table>
+    </tbody>
+</table> 
+
 
   } @else if (sig_stocks()?.length === 0) {
-  <p class="fallback-text">Unfortunately, no places could be found.</p>
+  <p class="fallback-text">Unfortunately, no stocks could be found.</p>
   } 
 
 </app-lists-container>

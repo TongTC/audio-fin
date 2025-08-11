@@ -69,22 +69,10 @@ ul {
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
 }
 
-table, th, td {
-  border: 1px solid black;
-  font-size: 1vw;
-}
 th {
   text-align: left;
   background-color:lightgray;
 }
-.vw{
-  font-size: 1vw;
-}
-
-td {
-  text-align: left;
-}
-tr:hover {background-color:lightgray}
 
 .dropbtn {
   background-color: #4CAF50;
