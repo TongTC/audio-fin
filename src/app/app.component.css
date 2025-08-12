@@ -1,3 +1,7 @@
-h1{
-  font-size: 5vw;
+.header{
+  display: flex;
+  align-items: left;
+  justify-content: left;
+  background-color: #f8f9fa;
+  padding: 20px;
 }

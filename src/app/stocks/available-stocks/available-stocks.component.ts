@@ -120,6 +120,7 @@ export class AvailableStocksComponent implements OnInit {
   filter(grp: string) {
     this.d = grp;
     this.sig_stocks.set(this.a.filter(m => m.grp === this.d))
+    
 
   }
 

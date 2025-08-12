@@ -1,4 +1,9 @@
 th {
   text-align: left;
   background-color:lightgray;
+  font-size: 15px;
+}
+
+ td{
+  font-size: 14px;
 }
