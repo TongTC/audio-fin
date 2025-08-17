@@ -24,7 +24,7 @@
       }
 
       @if (sig_stocks()&& !gg) {
-      <p>OK</p>
+      <p>Please See Below</p>
 
       <table class="table table-striped">
         <thead>
@@ -40,10 +40,10 @@
         </thead>
         <tbody>
 
-          @for (stock of shuffledStocks | slice:0:50; track stock.id) {
+          <!-- @for (stock of shuffledStocks ; track stock.id) { -->
 
 
-          <tr>
+          <tr *ngFor="let stock of shuffledStocks | slice:0:20; trackBy: trackByStockId">
             <td>{{ stock.id }}</td>
             <td>{{ stock.cate }}</td>
             <td>{{ stock.mfg }}</td>
@@ -53,7 +53,7 @@
             <td><a [routerLink]="'details/'+ stock.grp +'/'+stock.id">See</a></td>
           </tr>
 
-          }
+         
         </tbody>
       </table>
 

@@ -35,7 +35,6 @@ export class AvailableStocksComponent implements OnInit {
   shuffleArray<T>(array: T[]): T[] {
     const shuffledArray = [...array];
     let currentIndex: number = shuffledArray.length;
-    console.log(currentIndex);
     let randomIndex: number;
     while (currentIndex !== 0) {
       randomIndex = Math.floor(Math.random() * currentIndex);
@@ -49,7 +48,7 @@ export class AvailableStocksComponent implements OnInit {
 
   get shuffledStocks(): Stock[] {
     const stocks = this.sig_stocks();
-    return stocks ? this.shuffleArray(stocks) : [];
+    return stocks ? this.shuffleArray(stocks): [];
   }
 
 
@@ -94,7 +93,7 @@ export class AvailableStocksComponent implements OnInit {
   ]
 
 
-  ngOnInit() {
+ngOnInit() {
     this.isFetching.set(true);
 
     const subscription =
@@ -103,7 +102,7 @@ export class AvailableStocksComponent implements OnInit {
           this.sig_stocks.set(stocks$);
           this.forfilterstock = stocks$;
           this.a = stocks$;
-          console.log(this.filteredstocks);
+         // console.log(this.filteredstocks);
         },
         error: (error: Error) => {
           this.sig_error.set(error.message);
@@ -118,8 +117,7 @@ export class AvailableStocksComponent implements OnInit {
       subscription.unsubscribe();
     });
 
-    console.log("shuffled is", this.shuffledStocks);
-  }
+  }   
   
 click(text: string) {
 
@@ -130,6 +128,12 @@ filter(grp: string) {
     this.d = grp;
     this.sig_stocks.set(this.a.filter(m => m.grp === this.d))
   }
+
+trackByStockId(index: number, stock: Stock) {
+  return stock.id;
 }
+}
+
+
 
 
