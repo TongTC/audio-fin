@@ -13,7 +13,7 @@ export class StocksService {
   error = signal('');
   isFetching = signal(false);
 
-  private destroyRef = inject(DestroyRef);
+  destroyRef = inject(DestroyRef);
 
 
   loadAvailableStocks() {
@@ -23,14 +23,8 @@ export class StocksService {
     );
   }
 
-  private fetchStocks(url: string, errorMessage: string) {
+  fetchStocks(url: string, errorMessage: string) {
     return this.httpClient
       .get<{ stocks: Stock[] }>(url);
-      // .pipe(map((resData) => resData.stocks),
-      //   catchError((error) => {
-      //     console.log(error);
-      //     return throwError(() => new Error(errorMessage));
-      //   })
-      // );
   }
 }

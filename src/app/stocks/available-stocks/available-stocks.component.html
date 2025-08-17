@@ -40,7 +40,7 @@
         </thead>
         <tbody>
 
-          @for (stock of shuffledStocks | slice:0:10; track stock.id) {
+          @for (stock of shuffledStocks | slice:0:50; track stock.id) {
 
 
           <tr>
@@ -61,8 +61,6 @@
       } @else if (sig_stocks()?.length === 0) {
       <p class="fallback-text">Unfortunately, no stocks could be found.</p>
       }
-
-
 
     </div>
   </div>

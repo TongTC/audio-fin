@@ -9,7 +9,7 @@ import { RouterOutlet } from '@angular/router';
   standalone: true,
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
-  imports: [AvailableStocksComponent, NavbarComponent, RouterOutlet],
+  imports: [ NavbarComponent, RouterOutlet],
 })
 export class AppComponent {
     

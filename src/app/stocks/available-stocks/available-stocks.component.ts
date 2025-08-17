@@ -13,7 +13,7 @@ import { SearchboxComponent } from '../../searchbox/searchbox.component';
   standalone: true,
   templateUrl: './available-stocks.component.html',
   styleUrl: './available-stocks.component.css',
-  imports: [ListsContainerComponent, DecimalPipe, RouterLink, CommonModule,SearchboxComponent],
+  imports: [DecimalPipe, RouterLink, CommonModule, SearchboxComponent],
 })
 
 export class AvailableStocksComponent implements OnInit {
@@ -22,8 +22,8 @@ export class AvailableStocksComponent implements OnInit {
   isFetching = signal(false);  // initial signal for isFetching
   private stocksService = inject(StocksService);
   forfilterstock: Stock[] = [];
-  count:number = 8;
-  private filteredstocks: Stock[] |any = [];
+  count: number = 8;
+  private filteredstocks: Stock[] | any = [];
   filit: Stock[] = [];
   sig_error = signal('');
   private destroyRef = inject(DestroyRef);
@@ -31,15 +31,25 @@ export class AvailableStocksComponent implements OnInit {
   private a: Stock[] = [];
   d = '';
   gg = '';
+
   shuffleArray<T>(array: T[]): T[] {
-  return array
-    .map(value => ({ value, sort: Math.random() }))
-    .sort((a, b) => a.sort - b.sort)
-    .map(({ value }) => value);
-}
+    const shuffledArray = [...array];
+    let currentIndex: number = shuffledArray.length;
+    console.log(currentIndex);
+    let randomIndex: number;
+    while (currentIndex !== 0) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+      [shuffledArray[currentIndex], shuffledArray[randomIndex]] = [
+        shuffledArray[randomIndex], shuffledArray[currentIndex]];
+    }
+    return shuffledArray;
+  }
+
+
   get shuffledStocks(): Stock[] {
-  const stocks = this.sig_stocks();
-  return stocks ? this.shuffleArray(stocks) : [];
+    const stocks = this.sig_stocks();
+    return stocks ? this.shuffleArray(stocks) : [];
   }
 
 
@@ -85,14 +95,11 @@ export class AvailableStocksComponent implements OnInit {
 
 
   ngOnInit() {
-    this.fetchStocks();
     this.isFetching.set(true);
-    console.log(this.shuffledStocks);
-
 
     const subscription =
       this.stocksService.loadAvailableStocks().subscribe({
-        next: (stocks$:any) => {
+        next: (stocks$: any) => {
           this.sig_stocks.set(stocks$);
           this.forfilterstock = stocks$;
           this.a = stocks$;
@@ -111,27 +118,18 @@ export class AvailableStocksComponent implements OnInit {
       subscription.unsubscribe();
     });
 
+    console.log("shuffled is", this.shuffledStocks);
   }
-  click(text: string) {
-    
-    this.gg=text;
+  
+click(text: string) {
+
+    this.gg = text;
   }
 
-  filter(grp: string) {
+filter(grp: string) {
     this.d = grp;
     this.sig_stocks.set(this.a.filter(m => m.grp === this.d))
-    
-
   }
-
-  private fetchStocks() {
-    this.http.get('https://excess-5c57d-default-rtdb.asia-southeast1.firebasedatabase.app/stocks.json')
-      //this.http.get('http://localhost:3000/stocks')
-      .subscribe(stocks => {
-        // console.log(stocks);
-      });
-  }
-
 }
 
 
