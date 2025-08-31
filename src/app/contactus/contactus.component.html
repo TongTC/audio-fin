@@ -1,14 +1,53 @@
-
+<!-- <div class="container">
+  <div class="row">
+    <div class="col">
+      <h3>Tel: 092-274-4173</h3>
+      <h3>theexcess2025&#64;gmail.com</h3>
+    <input type="text" [(ngModel)]="userName" placeholder="Enter your name">
+    <p>Hello, {{ userName }}!</p>
+    </div>
+    <div class="col-5">
+      <img class="float-end" src="assets/operator-robot.png" alt="Contact Us" width="300px" height="auto" />
+    </div>
+  </div>
+</div> -->
 
 <div class="container">
   <div class="row">
     <div class="col">
-        <h1>Tel: 092-274-4173</h1>
-        <h1>theexcess2025&#64;gmail.com</h1>
+      <h3>Tel: 092-274-4173</h3>
+      <h3>theexcess2025&#64;gmail.com</h3>
+      <h3>Or write as you want</h3>
+
+      <form (ngSubmit)="submitForm()" #contactForm="ngForm">
+        <div class="mb-3">
+          <label for="email" class="form-label">Your Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="form-control"
+            [(ngModel)]="formData.email"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="message" class="form-label">Message</label>
+          <textarea
+            id="message"
+            name="message"
+            class="form-control"
+            [(ngModel)]="formData.message"
+            required
+          ></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!contactForm.form.valid">
+          Send
+        </button>
+      </form>
     </div>
-    <div class="col">
+    <div class="col-5">
       <img class="float-end" src="assets/operator-robot.png" alt="Contact Us" width="300px" height="auto" />
     </div>
-
   </div>
 </div>
