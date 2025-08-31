@@ -1,79 +1,102 @@
 <div class="container text-center">
-  <div class="row">
-    <div class="col border rounded">
-      <div class="col border rounded m-1">HOT</div>
-      <div class="col border rounded p-1 m-1">
-        <img
-          src="../assets/SOIC-8.png"
-          width="100%"
-          height="auto"
-          alt="pictures"
-        />
-        <span class="align-middle">ST-Micro Amplifiers</span>
-      </div>
-      <div class="col border rounded p-1 m-1">
-        <img src="../assets/s5.png" width="100%" height="auto" alt="" />
-        <span class="align-middle">Shindengen Bridge Diode</span>
-      </div>
+  <div class="row border">
+    <div class="col-3">
+      <h4>STOCK WE HAVE</h4>
+      <ul class="text-start">
+        <li>
+          <p>MICROCONTROLLER</p>
+        </li>
+        <li>
+          <p>CAPACITOR</p>
+        </li>
+        <li>
+          <p>RESISTOR</p>
+        </li>
+        <li>
+          <p>INDUCTOR</p>
+        </li>
+        <li>
+          <p>LED</p>
+        </li>
+        <li>
+          <p>DIODE</p>
+        </li>
+        <li>
+          <p>TRANSISTORS</p>
+        </li>
+        <li>
+          <p>MICROCONTROLLER</p>
+        </li>
+        <li>
+          <p>CONNECTOR</p>
+        </li>
+        <li>
+          <p>FUSE</p>
+        </li>
+              <li>
+          <p>OSCILLATOR</p>
+        </li>
+      </ul>
     </div>
-    <div class="col-7 border">
-        <div class="row border"></div>
-      <div div class="row border">
-      <img
-        class="rounded"
-        src="../assets/pexels-photo-4484078.webp"
-        alt="the man who ready support stock"
-        width="100%"
-        height="auto"
-      />
-       </div>
-       <div class="row border"></div>
+    <div div class="col-9">
+      <img class="img-fluid rounded my-2" src="../assets/intro_page.jpg"
+        alt="the man who ready support stock" />
     </div>
-    <div class="col border rounded">
-      <div class="col border rounded m-1">HOT</div>
-      <div class="col border rounded p-1 m-1">
-        <img src="../assets/lqfp-120.png" width="100%" height="auto" alt="" />
-        <span class="align-middle">Renesas MCU</span>
-      </div>
-      <div class="col border rounded p-1 m-1">
-        <img src="../assets/antenna.png" width="100%" height="auto" alt="" />
-        <span class="align-middle">Johanson Antenna</span>
-      </div>
+
+  </div>
+
+  <div class="row g3 mt-3">
+    
+
+    <h3 class="mt-4 text-start">Featured Stocks</h3>
+    <div class="container">
+    <div class="row">
+     
+        <div class="col rounded">
+          <app-cardholder 
+            [imageSrc]="'/assets/stock_pic/LQFP32.png'"
+            [cate]="'MCU'"
+            [maker]="'ST-MICRO'"
+            [pn]="'	STM8L151K4T6'">
+          </app-cardholder>
+        </div>
+        <div class="col">
+                    <app-cardholder 
+            [imageSrc]="'/assets/stock_pic/s5.png'"
+            [cate]="'Bridge Diode'"
+            [maker]="'Shindengen'"
+            [pn]="'D25XB60-7000'"></app-cardholder>
+        </div>
+        <div class="col">
+                              <app-cardholder 
+            [imageSrc]="'/assets/stock_pic/smd_inductor.png'"
+            [cate]="'Power Inductor'"
+            [maker]="'TDK'"
+            [pn]="'	LTF5022T-2R2N2R8-D '"></app-cardholder>
+        </div>
+           <div class="col">
+                              <app-cardholder 
+            [imageSrc]="'/assets/stock_pic/ferrite.webp'"
+            [cate]="'Ferrite Core'"
+            [maker]="'EPCOS/TDK'"
+            [pn]="'B65805J0063A087 '"></app-cardholder>
+        </div>
+        
+        <div class="col">
+                              <app-cardholder 
+            [imageSrc]="'/assets/stock_pic/LQFP32.png'"
+            [cate]="'8 Bit MCU'"
+            [maker]="'ST-MICRO'"
+            [pn]="'	STM8S003K3T6C'"></app-cardholder>
+        </div>
+     
     </div>
   </div>
 
-  <div class="container row">
-    <div class="col border rounded">2</div>
+</div>
 
-    <div class="col-9 border rounded">
-      <h2>We have stock</h2>
-      <p>
-        We are sharing the status of stock between each, Ready to delivery you can check.
-      </p>
-      <h2>You Have Stock ?</h2>
-      <p>Please tell us to help the return</p>
-    </div>
-    <div class="col border rounded">7</div>
 
-    <h1>SO HOT PRODUCTS</h1>
-    <div class="container text-center">
-      <div class="row">
-        <div class="col border rounded">
-          <app-cardholder />
-        </div>
-        <div class="col border rounded">
-          <app-cardholder />
-        </div>
-        <div class="col border rounded">
-          <app-cardholder />
-        </div>
-        <div class="col border rounded">
-          <app-cardholder />
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="card">
+  <div class="card mt-4">
     <div class="card-body p-1">
       <h5 class="card-title">Excess Stock Thailand</h5>
       <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->

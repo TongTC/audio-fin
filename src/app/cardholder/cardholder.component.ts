@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-cardholder',
@@ -8,5 +8,8 @@ import { Component } from '@angular/core';
   styleUrl: './cardholder.component.css'
 })
 export class CardholderComponent {
-
+  @Input() imageSrc: string = '';
+  @Input() cate: string = '';
+  @Input() maker: string = '';
+  @Input() pn: string = '';
 }

@@ -5,3 +5,9 @@
   background-color: #f8f9fa;
   padding: 20px;
 }
+
+.header img {
+  height: 50px;
+  margin-right: 20px;
+  align-items: center;
+}
