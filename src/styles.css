@@ -4,7 +4,12 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    
+
 }
+
+
+
 
 html {
   font-family: "Bricolage Grotesque", sans-serif;
@@ -60,6 +65,9 @@ header p {
   color: #9eb5b4;
 }
 
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -13,6 +13,6 @@ export const appConfig:ApplicationConfig={
       withRouterConfig({ paramsInheritanceStrategy: 'always' })
       
     ),
-    provideHttpClient(), provideAnimationsAsync('noop'),
+    provideHttpClient(), provideAnimationsAsync('noop'), provideAnimationsAsync(),
   ],
 }
