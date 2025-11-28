@@ -36,7 +36,8 @@ header {
 }
 
 .site-header, .site-footer, .site-content {
-    padding: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
 }
 
 .site-header {
