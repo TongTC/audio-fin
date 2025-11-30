@@ -6,82 +6,68 @@ import {
   signal,
 } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { StocksService } from '../services/stock.service';
-import { Stock } from '../model/stock.model';
-import { DecimalPipe } from '@angular/common';
-import { AllStockComponent } from '../stock/allstock.component';
+// import { StocksService } from '../services/products.service';
+// import { Stock } from '../model/product.model';
+import { Product } from '../model/product.model';
+import { Featureproducts } from '../featureproducts/featureproducts';
+import { Counter } from '../counter/counter';
+import { Button } from '../button/button';
 
 
 @Component({
   selector: 'app-productsdetail',
   standalone: true,
-  imports: [DecimalPipe,RouterLink],
+  imports: [Counter,Button],
   templateUrl: './productsdetail.component.html',
   styleUrl: './productsdetail.component.css',
 })
 export class ProductsdetailComponent implements OnInit {
-  sig_stocks = signal<Stock[] | undefined>(undefined);
-  Des = '';
-  Qty?:number;
-  Mfg ='';
-  imgSrc ='';
-  imgAlt='';
-  Cate='';
-  Pn='';
-  Lnk='';
-  buff?:Stock[];
-  stockQty = '';
-  a: Stock[] = [];
-  
+  productId: string | null = null;
+  cate: string | null = null;
+  product: Product = {};
+  qty: number = 0;
   private activatedRoute = inject(ActivatedRoute);
-  private stocksService = inject(StocksService);
   private destroyRef = inject(DestroyRef);
   constructor(private router: Router) {}
 
   error = signal('');
 
   ngOnInit(): void {
+        // Access route parameters
+    this.activatedRoute.paramMap.subscribe(params => {
+      this.productId = params.get('productId');
+      this.cate = params.get('cate');
 
-    // this.isFetching.set(true);
-    const subscription =
-      this.stocksService.loadAvailableStocks().subscribe({
-        next: (stocks$:any) => {
-          console.log(stocks$);
-          this.sig_stocks.set(stocks$);
-          this.a = stocks$;
-        },
-        error: (error: Error) => {
-          // this.sig_error.set(error.message);
-        },
-        complete: () => {
-          this.activatedRoute.paramMap.subscribe(
-            {
-              next: (paramMap) => {
-               
-                this.Des = this.a.find((u) => u.id === paramMap.get('stockId'))?.des || '';
-                this.Qty = this.a.find((u) => u.id === paramMap.get('stockId'))?.qty;
-                this.Mfg = this.a.find((u) => u.id === paramMap.get('stockId'))?.mfg || '';
-                this.Pn = this.a.find((u) => u.id === paramMap.get('stockId'))?.pn || '';
-                this.Cate = this.a.find((u) => u.id === paramMap.get('stockId'))?.cate || '';
-                this.imgSrc = this.a.find((u) => u.id === paramMap.get('stockId'))?.img.src || '';
-                this.imgAlt = this.a.find((u) => u.id === paramMap.get('stockId'))?.img.alt || '';
-                this.Lnk = this.a.find((u) => u.id === paramMap.get('stockId'))?.lnk || '';
-              }
+      // First, check if navigation state provided the product
+      const navState: any = window.history.state;
+      if (navState && navState.product) {
+        this.product = navState.product as Product;
+        return;
+      }
 
-            });
+      // Fallback: try to find product in local featuredProducts list
+      try {
+        const fp = new Featureproducts();
+        const found = fp.featuredProducts.find(p => p.id === this.productId);
+        if (found) {
+          this.product = found;
         }
-      });
+      } catch (e) {
+        // ignore if Featureproducts can't be instantiated
+      }
+    });
 
-
-    this.destroyRef.onDestroy(() => {
-      subscription.unsubscribe();
-
+        // Access query parameters
+    this.activatedRoute.queryParamMap.subscribe(params => {
+      const searchTerm = params.get('search');
+      console.log('Search term:', searchTerm);
     });
   }
 
-  //   back(): void {
-  //   this.router.navigate('/stock');
-  // }
+  onQtyChange(n: number) {
+    this.qty = n;
+    console.log('Selected qty:', n);
+  }
 }
 
 

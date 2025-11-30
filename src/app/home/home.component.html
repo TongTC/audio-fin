@@ -1,63 +1,14 @@
 <div class="container text-center">
   <div class="row">
 
-    <div div class="mx-auto">
+    <div class="mx-auto">
       <img  height="400" class="col-12 rounded my-auto" src="../assets/home_page.webp"
-        alt="the man who ready support stock" />
+        alt="Tube Amp" />
     </div>
 
   </div>
 
-  <div class="row g3 mt-3">
-    
-
-    <h3 class="mt-4 text-start">Featured Products</h3>
-    <div class="container">
-    <div class="row">
-     
-        <div class="col rounded">
-          <app-cardholder 
-            [imageSrc]="'/assets/300b_electro.png'"
-            [cate]="'Valve Tube'"
-            [maker]="'Electro-Harmonix'"
-            [pn]="'	300B'">
-          </app-cardholder>
-        </div>
-        <div class="col">
-                    <app-cardholder 
-            [imageSrc]="'/assets/jensen_cap01u.jpg'"
-            [cate]="' Capacitor'"
-            [maker]="'Jensen'"
-            [pn]="'0.1uF 400 VDC'">
-          </app-cardholder>
-        </div>
-        <div class="col">
-                              <app-cardholder 
-            [imageSrc]="'/assets/stock_pic/smd_inductor.png'"
-            [cate]="'Power Inductor'"
-            [maker]="'TDK'"
-            [pn]="'	LTF5022T-2R2N2R8-D '"></app-cardholder>
-        </div>
-           <div class="col">
-                              <app-cardholder 
-            [imageSrc]="'/assets/stock_pic/ferrite.webp'"
-            [cate]="'Ferrite Core'"
-            [maker]="'EPCOS/TDK'"
-            [pn]="'B65805J0063A087 '"></app-cardholder>
-        </div>
-        
-        <div class="col">
-                              <app-cardholder 
-            [imageSrc]="'/assets/stock_pic/LQFP32.png'"
-            [cate]="'8 Bit MCU'"
-            [maker]="'ST-MICRO'"
-            [pn]="'	STM8S003K3T6C'"></app-cardholder>
-        </div>
-     
-    </div>
-  </div>
-
-</div>
+<app-featureproducts/>
 
 
   <div class="card mt-4">

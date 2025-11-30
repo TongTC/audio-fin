@@ -1,0 +1,15 @@
+<div>
+
+	<div class="font-weight-bold fs-5 mb-2">เพิ่มสินค้าลงในตะกร้า</div>
+	<p class="font-weight-bold text-center w-100">จำนวน {{counter()}} ชิ้น </p>
+</div>
+
+
+
+<div class="button-group d-flex justify-content-center gap-2">
+	<app-button (click)="increment()" [text]="'+'"></app-button>
+	<app-button (click)="decrement()" [text]="'-'" [disabled]="counter() === 1"></app-button>
+</div>
+
+
+

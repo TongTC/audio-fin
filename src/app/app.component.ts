@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { AvailableStocksComponent } from './stocks/available-stocks/available-stocks.component';
+
 import { NavbarComponent } from './navbar/navbar.component';
 import { RouterOutlet } from '@angular/router';
 

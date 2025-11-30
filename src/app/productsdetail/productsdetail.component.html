@@ -1,62 +1,52 @@
-<h2>Stock Details</h2>
+<h2>Details</h2>
 
-<div class="container text-center m-2">
-  <div class="row ">
-    <div class="col ">
-      <!-- <table style="width: 100%">
-        <tr> -->
-          <img  width="150"
-              [src]="'../assets/stock_pic/'+ imgSrc" 
-              [alt]="imgAlt"
-          />
-        <!-- </tr> -->
-      <!-- </table> -->
-    </div>
-    <!-- Column2 -->
+<div class="border px-3 py-3 container">
+  <div class="row">
     <div class="col">
-      <table style="width: 100%">
-        <tr>
-          <th>Category</th>
+      <div class="image-wrapper">
+        <img [src]="product.img?.src" style="height: 500px , swidth:auto;" class="img-fluid mx-auto d-block"
+          alt="{{product.img?.alt}}">
+      </div>
+    </div>
+    <div class="col border">
 
-          <td>{{ Cate }}</td>
-        </tr>
-        <tr>
-          <th>Part Number</th>
-          <td>{{ Pn }}</td>
-        </tr>
-        <tr>
-          <th>Maker</th>
-          <td>{{ Mfg }}</td>
-        </tr>
-        <tr>
-          <th>Description</th>
-          <td>{{ Des }}</td>
-        </tr>
+            <table class="table">
+
+        <tbody>
           <tr>
-          <th>Info Link</th>
-
-          <td>
-            @if(Lnk!){
-              <a [href]="Lnk" target="_blank">Click Here</a>
-            }
+            <td><b>PART NUMBER</b></td>
+            <td>{{product.pn}}</td>
+          </tr>
+          <tr>
             
-          </td>
-        </tr>
-
-        <tr>
-          <th>Available Quantity</th>
-          <td>{{ Qty | number }} Pcs</td>
-        </tr>
+            <td><b>Maker</b></td>
+            <td>{{product.mfg}}</td>
+          </tr>
+          <tr>
+            
+            <td><b>Description</b></td>
+            <td>Triode Tube for Power Stage</td>
+           
+          </tr>
+        </tbody>
       </table>
-
-      <div class="row">
       
-      <div class="col mt-3"><a routerLink="/stock">Get the quote</a></div>
+      <app-counter></app-counter>
+      <div class="d-flex justify-content-center mt-3">
+        <app-button [text]="'Add To Cart'"></app-button>
+      </div>
+        
+
+
     </div>
 
-   
-    
+
   </div>
 
-  <div class="row"><a routerLink="/stock">Back to stock</a></div>
+
+
+
+
+
+
 </div>

@@ -1,17 +1,22 @@
-<div class="">
+<div class="border px-3 py-2 rounded shadow-sm h-100 card-holder">
   <div>
-    <a>
+    <a [routerLink]="['/product','details', product.cate, product.id]" [state]="{ product: product }">
       <div class="rounded image-box el-image">
-        <img  [src]="imageSrc" alt="" class="el-image__inner rounded"/>
+        <img  [src]="product.img?.src" alt="{{product.img?.alt}}" class="el-image__inner rounded"/>
       </div>
     </a>
   </div>
 
-</div>
-<div class="hot-info">
-  <p>{{cate}}</p>
-  <p>{{maker}}</p>
-  <p>{{pn}}</p>
+
+<div class="my-3  hot-info text-start">
+  
+  <p>Brand: {{product.mfg}}</p>
+  <p>{{product.pn}}</p>
+  <p>Price : {{product.price}}</p>
   
 </div>
-<app-addbutton/>
+</div>
+
+<div class="mt-2 d-flex justify-content-center">
+
+</div>

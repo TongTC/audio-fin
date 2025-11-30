@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { NgOptimizedImage } from '@angular/common'
 import { CardholderComponent } from '../cardholder/cardholder.component';
+import { Featureproducts } from '../featureproducts/featureproducts';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NgOptimizedImage,CardholderComponent],
+  imports: [Featureproducts],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

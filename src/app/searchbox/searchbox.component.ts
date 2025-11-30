@@ -1,5 +1,5 @@
 import { Component, DestroyRef, EventEmitter, Output, signal } from '@angular/core';
-import { Stock } from '../model/stock.model';
+import { Stock } from '../model/product.model';
 import { StocksService } from '../stocks/stock.service';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';

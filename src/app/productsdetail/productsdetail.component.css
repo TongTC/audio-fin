@@ -1,11 +1,11 @@
-table, tr, td {
+/* table, tr, td {
   border: 1px solid black;
   
 }
 th{
     text-align: left;
     background:#e2e2e2
-}
+} */
 
 
 
@@ -13,4 +13,22 @@ img {
   width: 50%;
   height: auto;
   
+}
+
+.image-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.image-wrapper img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.counter-overlay {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  z-index: 10;
 }

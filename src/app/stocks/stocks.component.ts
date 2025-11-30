@@ -2,7 +2,7 @@ import { Component, input, output } from '@angular/core';
 
 import { DecimalPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { Stock } from '../model/stock.model';
+import { Stock } from '../model/product.model';
 
 @Component({
   selector: 'app-stocks',

@@ -1,0 +1,33 @@
+<div class="row g3 mt-3">
+
+
+  <h3 class="mt-4 text-start">Featured Products</h3>
+  <div class="container">
+
+
+
+    <div class="grid">
+      <div class="row">
+        @for(list of featuredProducts; track list.id ){
+
+        <div class="col">
+          <app-cardholder [product]="{
+            id:list.id,
+            cate:list.cate , 
+            mfg:list.mfg,
+            pn:list.pn,
+            price:list.price,
+            img:{
+              src:list.img?.src,
+                }
+
+          }" />
+        </div>
+        }
+      </div>
+    </div>
+  </div>
+
+
+
+</div>
