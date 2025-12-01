@@ -1,6 +1,6 @@
 <div class="border px-3 py-2 rounded shadow-sm h-100 card-holder">
   <div>
-    <a [routerLink]="['/product','details', product.cate, product.id]" [state]="{ product: product }">
+    <a [routerLink]="['/products','details', product.cate, product.id]" [state]="{ product: product }">
       <div class="rounded image-box el-image">
         <img  [src]="product.img?.src" alt="{{product.img?.alt}}" class="el-image__inner rounded"/>
       </div>

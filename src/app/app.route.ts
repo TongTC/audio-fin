@@ -11,12 +11,15 @@ import { Allproducts } from './allproducts/allproducts';
 export const routes: Routes = [
 
   {path:'home',component:HomeComponent},
-  {path:'allproducts',component:Allproducts},
+//   {path:'allproducts',component:Allproducts},
   {path:'contact',component:ContactusComponent},
-  {path:'product',component:Productsholder ,
+  {path:'products',component:Productsholder ,
       
      children:[
-
+      { 
+         path:'',
+         component:Allproducts
+      },
       { 
          path:'details/:cate/:productId',
          component:ProductsdetailComponent
