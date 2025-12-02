@@ -1,0 +1,20 @@
+<p>cart works!</p>
+ <div>
+      <h1>Shopping Cart using Signals Angular (17+)</h1>
+      @for(item of cartItems; track cartItems){
+      <div  class="cart-item">
+        <div class="product-info">
+         <app-item-with-icon-component [item]="item"/>
+        </div>
+        <button (click)="removeItem(item.productId)" class="remove-button">Remove</button>
+        <!-- <p>{{ item | json }}</p> -->
+      </div>
+    }
+      <hr>
+
+      <div class="total-amount">
+        <strong>Total:</strong> £{{ totalAmount }}
+      </div>
+      <button (click)="addItem()" class="add-button">🍌 Add Item</button>
+      <button (click)="applyDiscount()" [disabled]="isDiscountApplied" class="add-button discount">💳 Apply Discount 10%</button>
+    </div>
