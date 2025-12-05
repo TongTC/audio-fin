@@ -6,7 +6,7 @@ import { Cart } from '../cart/cart';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [Featureproducts,Cart],
+  imports: [Featureproducts],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

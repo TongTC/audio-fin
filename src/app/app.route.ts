@@ -6,6 +6,7 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { ContactusComponent } from './contactus/contactus.component';
 import { Productsholder } from './productsholder/productsholder';
 import { Allproducts } from './allproducts/allproducts';
+import { Cartproducts } from './cartproducts/cartproducts';
 
 
 export const routes: Routes = [
@@ -29,6 +30,9 @@ export const routes: Routes = [
   },
   
   {path:'',component:HomeComponent},
+
+  {path:'cartproducts',component:Cartproducts},
+  
    {path:'**',component:NotfoundComponent}
 ];
    //test

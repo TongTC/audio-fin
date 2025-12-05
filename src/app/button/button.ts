@@ -12,4 +12,16 @@ import { MatIconModule } from '@angular/material/icon';
 export class Button {
   @Input() text: string = '';
   @Input() disabled: boolean = false;
+
+  addItem() {
+    // fixed added product
+    const newItem: any = {
+      icon: '🍌',
+      productName: 'bananas',
+      productId: '004',
+      quantity: 1,
+      price: 10,
+    };}
+
+
 }

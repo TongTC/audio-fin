@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Counter } from '../counter/counter';
 import { Product } from '../model/product.model';
 import { RouterLink } from '@angular/router';
+import { CartService } from '../service.cart';
 
 
 @Component({
@@ -12,5 +13,10 @@ import { RouterLink } from '@angular/router';
   styleUrl: './cardholder.component.css'
 })
 export class CardholderComponent {
+
   @Input() product:Product = { };
+  constructor(private cartService: CartService) {}
+
+
+  
 }

@@ -12,28 +12,41 @@ import { Product } from '../model/product.model';
 import { Featureproducts } from '../featureproducts/featureproducts';
 import { Counter } from '../counter/counter';
 import { Button } from '../button/button';
+import { CartService } from '../service.cart';
 
 
 @Component({
   selector: 'app-productsdetail',
   standalone: true,
-  imports: [Counter,Button],
+  imports: [Counter, Button],
   templateUrl: './productsdetail.component.html',
   styleUrl: './productsdetail.component.css',
 })
 export class ProductsdetailComponent implements OnInit {
+  
   productId: string | null = null;
   cate: string | null = null;
   product: Product = {};
   qty: number = 0;
+
+  
   private activatedRoute = inject(ActivatedRoute);
   private destroyRef = inject(DestroyRef);
-  constructor(private router: Router) {}
+  
+  constructor(private router: Router, private cartService: CartService) {}
+
+
+  cartItems = this.cartService.cart().items;
+  totalAmount = this.cartService.cart().totalAmount;
+
+  isDiscountApplied = false;
+
+
 
   error = signal('');
 
   ngOnInit(): void {
-        // Access route parameters
+    // Access route parameters
     this.activatedRoute.paramMap.subscribe(params => {
       this.productId = params.get('productId');
       this.cate = params.get('cate');
@@ -57,7 +70,7 @@ export class ProductsdetailComponent implements OnInit {
       }
     });
 
-        // Access query parameters
+    // Access query parameters
     this.activatedRoute.queryParamMap.subscribe(params => {
       const searchTerm = params.get('search');
       console.log('Search term:', searchTerm);
@@ -68,6 +81,31 @@ export class ProductsdetailComponent implements OnInit {
     this.qty = n;
     console.log('Selected qty:', n);
   }
+
+  addItem() {
+    // fixed added product
+    const newItem: any = {
+      icon: '🍌',
+      productName: 'bananas',
+      productId: '004',
+      quantity: 1,
+      price: 10,
+    }
+
+    this.cartService.addItem(newItem);
+
+
+     this.updateCart();
+  }
+
+  updateCart() {
+    // Update cartItems and totalAmount after removing an item
+    this.cartItems = this.cartService.cart().items;
+     this.totalAmount = this.cartService.cart().totalAmount;
+  }
+
+
 }
+
 
 

@@ -10,6 +10,7 @@ import { ItemWithIconComponent } from '../item-with-icon-component/item-with-ico
   styleUrl: './cart.scss',
 })
 export class Cart {
+  
   cartItems = this.cartService.cart().items;
   totalAmount = this.cartService.cart().totalAmount;
   isDiscountApplied = false;
@@ -27,15 +28,15 @@ export class Cart {
     };
 
     this.cartService.addItem(newItem);
-    this.udpateCart();
+      this.updateCart();
   }
 
     removeItem(productId: string) {
     this.cartService.removeItem(productId);
-    this.udpateCart();
+    this.updateCart();
   }
 
-    udpateCart() {
+    updateCart() {
     // Update cartItems and totalAmount after removing an item
     this.cartItems = this.cartService.cart().items;
     this.totalAmount = this.cartService.cart().totalAmount;

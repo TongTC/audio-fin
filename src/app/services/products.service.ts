@@ -1,8 +1,5 @@
 
 import { Injectable, signal, inject, DestroyRef } from '@angular/core';
-import { catchError, map, Observable, tap, throwError } from 'rxjs';
-
-import { Product } from '../model/product.model';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
