@@ -9,7 +9,7 @@ export interface Product {
   pn?: string;
   lnk?:string;
   des?:string;
-  price?:string;
+  price?: number;
 }
 
 export interface Cate{

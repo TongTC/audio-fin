@@ -31,10 +31,12 @@
         </tbody>
       </table>
       
-      <app-counter></app-counter>
+      <app-counter (valueChange)="onQtyChange($event)"></app-counter>
       <div class="d-flex justify-content-center mt-3">
-        <app-button [text]="'Add To Cart'" (click)="addItem()"></app-button>
-        <button (click)="addItem()" class="add-button">🍌 Add Item</button>
+        <app-button [text]="qty > 0 ? 'Add ' + qty + ' To Cart' : 'Add To Cart'" (click)="addItem()"></app-button>
+        <!-- <button (click)="addItem()" class="add-button">🍌 Add Item</button> -->
+      
+      
       </div>
         
 

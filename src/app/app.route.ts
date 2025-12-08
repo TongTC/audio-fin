@@ -6,7 +6,8 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { ContactusComponent } from './contactus/contactus.component';
 import { Productsholder } from './productsholder/productsholder';
 import { Allproducts } from './allproducts/allproducts';
-import { Cartproducts } from './cartproducts/cartproducts';
+import { Cart } from './cart/cart';
+
 
 
 export const routes: Routes = [
@@ -14,6 +15,7 @@ export const routes: Routes = [
   {path:'home',component:HomeComponent},
 //   {path:'allproducts',component:Allproducts},
   {path:'contact',component:ContactusComponent},
+  {path:'cartproducts',component:Cart},
   {path:'products',component:Productsholder ,
       
      children:[
@@ -31,7 +33,7 @@ export const routes: Routes = [
   
   {path:'',component:HomeComponent},
 
-  {path:'cartproducts',component:Cartproducts},
+  
   
    {path:'**',component:NotfoundComponent}
 ];

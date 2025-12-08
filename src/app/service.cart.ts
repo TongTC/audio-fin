@@ -21,35 +21,26 @@ export class CartService {
   
     addItem(item: CartItem) {
     this.cart.update((currentCart) => {
-      const existingItem = currentCart.items.find(
-        (i) => i.productId === item.productId
-      );
+      // create a new items array to avoid mutating the original
+      const items = [...currentCart.items];
+      const idx = items.findIndex(i => i.productId === item.productId);
 
-      if (existingItem) {
-        // Increment quantity if item already exists
-        existingItem.quantity += item.quantity;
+      if (idx >= 0) {
+        const existing = items[idx];
+        items[idx] = { ...existing, quantity: existing.quantity + item.quantity };
       } else {
-        // Add the new item if it doesn't exist
-        currentCart.items.push(item);
+        items.push({ ...item });
       }
 
-      currentCart.totalAmount += item.price * item.quantity;
-
-      return currentCart;
+      const totalAmount = this.calculateTotalAmount(items);
+      return { items, totalAmount };
     });
   }
       removeItem(productId: string) {
     this.cart.update((currentCart) => {
-      const item = currentCart.items.find((i) => i.productId === productId);
-
-      if (item) {
-        currentCart.totalAmount -= item.price * item.quantity;
-        currentCart.items = currentCart.items.filter(
-          (i) => i.productId !== productId
-        );
-      }
-
-      return currentCart;
+      const items = currentCart.items.filter(i => i.productId !== productId);
+      const totalAmount = this.calculateTotalAmount(items);
+      return { items, totalAmount };
     });
   }
 

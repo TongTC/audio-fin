@@ -1,6 +1,12 @@
-    <div>
-      <span class="item-icon">{{ item.icon }}</span>
+    <div class="d-flex align-items-center gap-3">
+     @if(item.img?.src){
+        <img [src]="item.img?.src" style="height: 60px; width: auto; object-fit: contain;" alt="{{item.img?.alt}}">
+      }
+
+      @else{<span class="item-icon">{{ item.icon }}</span>}
+  
+
       <span class="item-details">
-        <b>{{ item.productName }}</b> - {{ item.quantity }} x £{{ item.price }}
+        <b>{{ item.productName }}</b> - {{ item.quantity }} x {{ item.price }} Baht
       </span>
     </div>

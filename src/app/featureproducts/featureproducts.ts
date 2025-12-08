@@ -14,7 +14,7 @@ export class Featureproducts {
     {
       id: '1',
       pn: 'TRIODE 300B',
-      price: '1,800',
+      price: 1800,
       cate: 'tube',
       mfg: 'Electro-Harmonix',
       img: { src: '/assets/300b_electro.png', alt: 's' }
@@ -23,7 +23,7 @@ export class Featureproducts {
       id: '2',
       pn: '12AX7/ECC83s',
       cate: 'tip',
-      price: '1,800',
+      price: 1800,
       mfg: 'JJ',
       img: { src: '/assets/JJ-12AX7.jpg', alt: 's' }
     },
@@ -31,7 +31,7 @@ export class Featureproducts {
       id: '3',
       pn: '0.1uF',
       cate: 'top',
-      price: '1,400/pair',
+      price: 1400,
       mfg: 'Jensen',
       img: { src: '/assets/jensen_cap01u.jpg', alt: 's' }
     },
@@ -39,7 +39,7 @@ export class Featureproducts {
       id: '4',
       pn: '12AX7',
       cate: 'tap',
-      price: '1,800',
+      price: 1800,
       mfg: 'Tung-Sol',
       img: { src: '/assets/12ax7.webp', alt: 's' }
     },

@@ -11,11 +11,9 @@ import { ItemWithIconComponent } from '../item-with-icon-component/item-with-ico
 })
 export class Cart {
   
-  cartItems = this.cartService.cart().items;
-  totalAmount = this.cartService.cart().totalAmount;
   isDiscountApplied = false;
 
-  constructor(private cartService: CartService) {}
+  constructor(public cartService: CartService) {}
 
     addItem() {
     // fixed added product
@@ -28,25 +26,19 @@ export class Cart {
     };
 
     this.cartService.addItem(newItem);
-      this.updateCart();
   }
 
     removeItem(productId: string) {
     this.cartService.removeItem(productId);
-    this.updateCart();
-  }
-
-    updateCart() {
-    // Update cartItems and totalAmount after removing an item
-    this.cartItems = this.cartService.cart().items;
-    this.totalAmount = this.cartService.cart().totalAmount;
   }
 
   
   applyDiscount() {
     if (!this.isDiscountApplied) {
-      //  subtract 10%
-      this.totalAmount -= this.totalAmount * 0.1;
+      // subtract 10% on the cart total by updating the cart signal
+      const current = this.cartService.cart();
+      const discounted = Math.round((current.totalAmount - current.totalAmount * 0.1) * 100) / 100;
+      this.cartService.cart.update(() => ({ items: current.items, totalAmount: discounted }));
       this.isDiscountApplied = true;
     }
   }

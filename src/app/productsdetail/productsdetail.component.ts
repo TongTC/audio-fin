@@ -9,6 +9,7 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 // import { StocksService } from '../services/products.service';
 // import { Stock } from '../model/product.model';
 import { Product } from '../model/product.model';
+import { CartItem } from '../cart-item.interface';
 import { Featureproducts } from '../featureproducts/featureproducts';
 import { Counter } from '../counter/counter';
 import { Button } from '../button/button';
@@ -33,7 +34,7 @@ export class ProductsdetailComponent implements OnInit {
   private activatedRoute = inject(ActivatedRoute);
   private destroyRef = inject(DestroyRef);
   
-  constructor(private router: Router, private cartService: CartService) {}
+  constructor(private router: Router, public cartService: CartService) {}
 
 
   cartItems = this.cartService.cart().items;
@@ -83,19 +84,27 @@ export class ProductsdetailComponent implements OnInit {
   }
 
   addItem() {
-    // fixed added product
-    const newItem: any = {
-      icon: '🍌',
-      productName: 'bananas',
-      productId: '004',
-      quantity: 1,
-      price: 10,
+    // Build a CartItem from the current Product and selected qty
+    if (!this.product || !this.product.id) {
+      console.warn('No product selected to add to cart');
+      return;
     }
+
+    const quantity = this.qty && this.qty > 0 ? this.qty : 1;
+    const price = this.product.price ?? 0;
+
+    const newItem: CartItem = {
+      productId: this.product.id,
+      productName: this.product.pn || this.product.mfg || 'Product',
+      quantity,
+      price,
+      img: this.product.img ? { src: this.product.img.src, alt: this.product.img.alt } : undefined,
+    };
 
     this.cartService.addItem(newItem);
 
-
-     this.updateCart();
+    // update local view if you still use local copies (optional)
+    this.updateCart();
   }
 
   updateCart() {

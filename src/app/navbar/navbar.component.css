@@ -30,3 +30,7 @@ ul {
   }
 
   
+.navbar {
+  top: 0;
+  background: var(--navBackground);
+}
